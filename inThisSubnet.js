@@ -24,18 +24,18 @@ function mainPrompt() {
             quit();
         }
         else {
-            console.log("We've escaped the main prompt choice somehow - log an error")
+            console.log(`We've escaped the main prompt choice somehow - log an error`)
         }
     })
 }
 
 function quit() {
-    console.log("\n=====\nHave a great day!\n\nGood Bye!\n=====");
+    console.log(`\n=====\nHave a great day!\n\nGood Bye!\n=====`);
     process.exit();
 }
 
 function grabTheLoadFile() {    
-    console.log('Ok then, grabbing the load file.');
+    console.log(`Ok then, grabbing the load file.`);
     // ok, ok, this load file isn't very dynamic - that part can be added easy enough
     console.log('\n')
     fs.readFile(loadFile, "utf8", function(error, data) {
@@ -48,7 +48,7 @@ function grabTheLoadFile() {
         dataArray.forEach((item) => {
             let itemArray = item.split(",");
             let results = ipAddressValidator(itemArray[0], itemArray[1].trim());
-            console.log('Results: ' + results);
+            console.log(results);
         });
     });
     setTimeout(() => mainPrompt(), 3000); // 3 second delay - send to main area again
@@ -68,12 +68,12 @@ function enterIpAndSubnetManually() {
         }
     ]).then(function(response){
         if (response.hexIp === "") {
-            console.log("Target IP was empty, let's try again");
+            console.log(`Target IP was empty, let's try again`);
             enterIpAndSubnetManually();
             return;
         }
         else if (response.subnetMask === "") {
-            console.log("Subnet mask was empty, let's try again");
+            console.log(`Subnet mask was empty, let's try again`);
             enterIpAndSubnetManually();
             return;
         }
